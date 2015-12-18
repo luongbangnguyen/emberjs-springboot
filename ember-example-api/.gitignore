@@ -1,0 +1,9 @@
+
+/.idea
+/.settings
+/bin
+/build
+/.classpath
+/.project
+/ember-example-api.iml
+

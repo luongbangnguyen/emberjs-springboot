@@ -1,0 +1,2 @@
+include 'ember-example-api'
+include 'ember-example-web'
