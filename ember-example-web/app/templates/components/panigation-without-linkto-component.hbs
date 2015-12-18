@@ -1,0 +1,9 @@
+<ul class = "pagination">
+   <li class="first-page {{active-panigatiion-helper meta.number 1}}"><a href="javascript:void(0)" {{action 'goTofistPage'}}>{{fa-icon icon="fast-backward"}}</a></li>
+   <li class="backward-page {{active-panigatiion-helper meta.number 1}}"><a href="javascript:void(0)" {{action 'backwardPage'}}>{{fa-icon icon="backward"}}</a></li>
+   {{#each (array-number-helper meta.number meta.totalPages) as |i| }}
+   <li class="item-pagination {{active-pape-helper meta.number i}}"><a href="javascript:void(0)" {{action 'goToPage' i}}>{{i}}</a></li>
+   {{/each}}
+   <li class="forward-page {{active-panigatiion-helper meta.number meta.totalPages}}"><a href="javascript:void(0)" {{action 'forwardPage'}}>{{fa-icon icon="forward"}}</a></li>
+   <li class="last-page {{active-panigatiion-helper meta.number meta.totalPages}}"><a href="javascript:void(0)" {{action 'goToLastPage'}}>{{fa-icon icon="fast-forward"}}</a></li>
+</ul>

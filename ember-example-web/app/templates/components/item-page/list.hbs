@@ -1,0 +1,39 @@
+<table class="table table-bordered table-list">
+	<thead>
+		<tr>
+			<th>order</th>
+			<th>name</th>
+			<th>category name</th>
+			<th>price</th>
+			<th>amount</th>
+			<th>create date</th>
+			<th>update date</th>
+			{{#unless readOnly}}<th>action</th>{{/unless}}
+		</tr>
+	</thead>
+	<tbody>
+		{{#each model as |item index|}}
+		<tr>
+			<td class="center">{{order-number-flow-page index meta.number}}</td>
+			<td><a href="javascript:void(0)"{{action "viewItem" item}}>{{item.name}}</a></td>
+			<td>{{item.category.name}}</td>
+			<td class="number">{{item.price}}</td>
+			<td class="number">{{item.amount}}</td>
+			<td class="number">{{format-date item.createDate "DD/MM/YYYY"}}</td>
+			<td class="number">{{format-date item.updateDate "DD/MM/YYYY"}}</td>
+			{{#unless readOnly}}
+			<td class="center">
+				<a href="javascript:void(0)" {{action "editItem" item}}>
+					{{fa-icon icon="pencil-square-o" class="faIcon pdTopFa"}}
+				</a>
+				<a href="javascript:void(0)" {{action "deleteItem"  item}}>
+					{{fa-icon icon="trash-o" class="faIcon"}}
+				</a>
+			</td>
+			{{/unless}}
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+{{item-page/new visibleCategoryChosen=true modal-name='update-item' title=itemTitle readOnly=readOnlyItem addNewItem=updateItem itemObject=itemUpdating closeItemUpdate='closeItemUpdate' getNewRecordCategory='getNewRecordCategory'}}
+{{delete-confirm deleteConfirm='deleteConfirm' name="item" modalName="delete-item"}}

@@ -1,0 +1,18 @@
+<div class="modal fade" id="modal-{{modalName}}" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete {{name}}</h4>
+      </div>
+      <div class="modal-body">
+       	<strong>Do you want delete {{name}} ?</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default closeModal" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" {{action deleteConfirm}}>Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

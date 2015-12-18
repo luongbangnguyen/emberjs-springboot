@@ -1,0 +1,36 @@
+<div class="modal fade" id="modal-{{modalName}}" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Choose Category</h4>
+      </div>
+      <div class="modal-body">
+      <div class="form-horizontal">
+       <div class="form-group">
+          <div class="col-sm-10">
+            {{input type="text" value=keywordSearch placeholder="Eter category name" class="form-control" key-down="typeKeyword" }}
+          </div>
+          <div class="col-sm-2">
+             <button type="button" {{action "searchCategory"}} class="btn btn-default">{{fa-icon icon="search"}}</button>
+          </div>
+        </div>
+       </div> 
+      {{alert-component text=textAlert flash=flash}}
+      {{#if listCategoryChosen}} 
+      {{category-page/list-view model=listCategoryChosen itemObject=itemObject meta=metaCategoryChosen checkedCategory='checkedCategory'}}
+      {{else}}
+      <h2 class="not_found_keyword">Not Found Category Is Name: {{keywordSearch}}</h2>
+      {{/if}}
+
+      {{#if (if-cond metaCategoryChosen.totalPages '>' 1)}}
+      {{panigation-without-linkto-component meta=metaCategoryChosen actionReturn=gotoPage}}
+      {{/if}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default closeModal" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" {{action "chooseCategory"}}>Choose</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

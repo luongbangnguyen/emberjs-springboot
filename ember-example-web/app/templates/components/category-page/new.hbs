@@ -1,0 +1,22 @@
+{{#modal-component title=title modal-name=modal-name save=saveCategory close=close readOnly=readOnly}}
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Name:</label>
+    <div class="col-sm-10">
+    	{{input value=categoryObject.name type="text" disabled=readOnly  placeholder="Enter Name" class="form-control"}}
+    </div>
+  </div>
+</div>
+<hr>
+{{#unless readOnly}}
+<div class="createButton">
+	<button type="button" class="btn btn-success" {{action 'addItem'}}>Add Item</button>
+</div>
+{{alert-component text=textAlert flash=flash}}
+{{/unless}}
+{{item-page/list model=listItem meta=meta  updateItem='updateItem' getNewRecordCategoryUpdate='getNewRecordCategoryUpdate' deleteItem='deleteItem' readOnly=readOnly}}
+{{#if (if-cond meta '&&' (if-cond meta.totalPages '>' 1)) }}
+{{panigation-without-linkto-component meta=meta actionReturn='gotoPage'}}
+{{/if}}
+{{/modal-component}}
+{{item-page/new  visibleCategoryChosen=false itemObject=itemObject modal-name="item-new" title="Create new item" addNewItem='addNewItem' }}

@@ -1,0 +1,46 @@
+{{#modal-component title=title readOnly=readOnly modal-name=modal-name save=addNewItem close=closeItemUpdate}}
+<div class="form-horizontal">
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" >Name:</label>
+    <div class="col-sm-10">
+    	{{input type="text" disabled=readOnly value=itemObject.name  placeholder="Enter Name" class="form-control"}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2">Price:</label>
+    <div class="col-sm-10">
+    	{{input type="text" disabled=readOnly value=itemObject.price  placeholder="Enter Price" class="form-control"}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2">Amount:</label>
+    <div class="col-sm-10">
+    	{{input type="text" disabled=readOnly value=itemObject.amount placeholder="Enter Amount" class="form-control"}}
+    </div>
+  </div>
+  {{#if visibleCategoryChosen}}
+  <div class="form-group">
+    <label class="control-label col-sm-2">Category:</label>
+    {{#if readOnly}}
+     <div class="col-sm-10">
+      {{input type="text" disabled=true value=itemObject.category.name placeholder="Chose Category" class="form-control"}}
+    </div>
+    {{/if}}
+
+    {{#unless readOnly}}
+    <div class="col-sm-7">
+      {{input type="text"  disabled=true value=itemObject.category.name placeholder="Chose Category"  class="form-control"}}
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-success" {{action 'displayModalCategoryChosen'}}>Chose category</button>
+    </div>
+    {{/unless}}
+  </div>
+  {{/if}}
+
+</div>
+{{/modal-component}}
+{{item-page/list-category-choosen modalName='categories-chosen' chooseCategory='chooseCategory' getNewRecordCategoryUpdate='getNewRecordCategoryUpdate' gotoPage='gotoPageCategory' listCategoryChosen=listCategoryChosen metaCategoryChosen=metaCategoryChosen itemObject=itemObject}}

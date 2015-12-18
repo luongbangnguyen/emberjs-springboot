@@ -1,0 +1,28 @@
+<table class="table table-bordered table-list">
+	<thead>
+		<tr>
+			<th></th>
+			<th>order</th>
+			<th>name</th>
+			<th>create day</th>
+			<th>update date</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each model as |category index|}}
+		<tr>
+			<td class="center">
+				{{#if (if-cond itemObject.category.id '==' category.id)}}
+					<input class="check-category" checked type="checkbox" {{action "chooseCategory" category on="change"}}/>
+				{{else}}
+					<input class="check-category" type="checkbox" {{action "chooseCategory" category on="change"}}/>
+				{{/if}}
+			</td>
+			<td class="center">{{order-number-flow-page index meta.number}}</td>
+			<td><a href="javascript:void(0)">{{category.name}}</a></td>
+			<td class="number">{{format-date category.createDate "DD/MM/YYYY"}}</td>
+			<td class="number">{{format-date category.updateDate "DD/MM/YYYY"}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>

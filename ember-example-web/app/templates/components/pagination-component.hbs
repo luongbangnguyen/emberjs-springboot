@@ -1,0 +1,9 @@
+<ul class = "pagination">
+   <li class="first-page {{active-panigatiion-helper meta.number 1}}">{{#link-to link (query-params page=1)}}{{fa-icon icon="fast-backward"}}{{/link-to}}</li>
+   <li class="backward-page {{active-panigatiion-helper meta.number 1}}">{{#link-to link (query-params page=meta.number) }}{{fa-icon icon="backward"}}{{/link-to}}</li>
+   {{#each (array-number-helper meta.number meta.totalPages) as |i| }}
+   <li class="item-pagination {{active-pape-helper meta.number i}}">{{#link-to link (query-params page=i)}}{{i}}{{/link-to}}</li>
+   {{/each}}
+   <li class="forward-page {{active-panigatiion-helper meta.number meta.totalPages}}">{{#link-to link (query-params page=(forward-page meta.number))}}{{fa-icon icon="forward"}}{{/link-to}}</li>
+   <li class="last-page {{active-panigatiion-helper meta.number meta.totalPages}}">{{#link-to link (query-params page=meta.totalPages)}}{{fa-icon icon="fast-forward"}}{{/link-to}}</li>
+</ul>

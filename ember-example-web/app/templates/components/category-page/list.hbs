@@ -1,0 +1,35 @@
+<table class="table table-bordered table-list">
+	<thead>
+		<tr>
+			<th>order</th>
+			<th>name</th>
+			<th>create day</th>
+			<th>update date</th>
+			{{#unless readOny}}
+			<th>action</th>
+			{{/unless}}
+		</tr>
+	</thead>
+	<tbody>
+		{{#each model as |category index|}}
+		<tr>
+			<td class="center">{{order-number-flow-page index model.store.meta.number}}</td>
+			<td><a href="javascript:void(0)"{{action "viewCategory" category index}}>{{category.name}}</a></td>
+			<td class="number">{{format-date category.createDate "DD/MM/YYYY"}}</td>
+			<td class="number">{{format-date category.updateDate "DD/MM/YYYY"}}</td>
+			{{#unless readOny}}
+			<td class="center">
+				<a href="javascript:void(0)" {{action "update" category index }}>
+					{{fa-icon icon="pencil-square-o" class="faIcon pdTopFa"}}
+				</a>
+				<a href="javascript:void(0)" {{action "deleteCategory" category}}>
+					{{fa-icon icon="trash-o" class="faIcon"}}
+				</a>
+			</td>
+			{{/unless}}
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+{{category-page/new title=title categoryObject=categoryObjectUpdate itemObject=itemObjectUpdate listItem=listItemUpdate meta=meta modal-name="category-update" saveCategory=updateCategory updateItem='updateItem' alertMessage='alertMessage' addNewItem='addNewItem' close='closeModalUpdate' readOnly=readOnly getNewRecordCategoryUpdate='getNewRecordCategoryUpdate'}}
+{{delete-confirm deleteConfirm=deleteConfirm name="category" modalName="delete-category"}}

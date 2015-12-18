@@ -1,0 +1,16 @@
+{{navigation-page}}
+<div id="contain-main" class="page--on_item">
+	<div class="contain">
+		{{#if model}}
+		{{alert-component text=textAlert flash=flash}}
+		<div class="createButton">
+			<button type="button" class="btn btn-success" {{action 'createNewItem'}}>Add New</button>
+		</div>
+		{{item-page/list model=model meta=model.store.meta  updateItem='updateItem' deleteItem='deleteItem' readOnly=readOnly getNewRecordCategoryUpdate = 'getNewRecordCategoryUpdate'}}
+		{{pagination-component meta=model.store.meta link="item"}}
+		{{else}}
+			<h1>Empty list</h1>
+		{{/if}}
+	</div>
+	{{item-page/new visibleCategoryChosen=true itemObject=itemNewObject modal-name="item-new" title="Create new item" addNewItem='addNewItem' getNewRecordCategory='getNewRecordCategory' }}
+</div>
