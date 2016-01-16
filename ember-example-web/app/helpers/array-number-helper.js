@@ -6,8 +6,8 @@ export function arrayNumberHelper(params/*, hash*/) {
 
 	let pages_display = 5;
 	let cal = pages_display * parseInt(number / pages_display);
-	let begin = cal === 0 ? 1 : cal;
-	let last = cal + (pages_display - 1) > total_page ? total_page : cal + (pages_display - 1);
+	let begin = cal + 1;
+	let last = begin + (pages_display - 1) > total_page ? total_page : begin + (pages_display - 1);
 	return createArray(begin, last);
 }
 
