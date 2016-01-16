@@ -5,32 +5,10 @@ export function arrayNumberHelper(params/*, hash*/) {
 	let total_page = params[1];
 
 	let pages_display = 5;
-	let begin = 1;
-	let last = pages_display;
-
-	if(total_page <= pages_display){
-		return createArray(begin, total_page);
-	}
-
-	let times = parseInt((number) / pages_display, 10);
-
-	if(pages_display * times === number){
-		begin = number - (pages_display - 1);
-		last = number;
-		return createArray(begin, last);
-	}
-
-	if(pages_display * times + pages_display > total_page){
-		begin = pages_display * times + 1;
-		last =  begin + (total_page - begin);
-		return createArray(begin, last);
-	}
-
-
-	begin = pages_display * times + 1;
-	last = (begin + pages_display - 1);
+	let cal = pages_display * parseInt(number / pages_display);
+	let begin = cal === 0 ? 1 : cal;
+	let last = cal + (pages_display - 1) > total_page ? total_page : cal + (pages_display - 1);
 	return createArray(begin, last);
-
 }
 
 function createArray(begin, last){
